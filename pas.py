@@ -22,3 +22,4 @@ def pas(host,pw):
     notice=soup.find('div',{'class':'notice'}).string
     notice=notice.strip()
     print(notice)
+    return notice

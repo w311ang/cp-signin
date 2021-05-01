@@ -32,5 +32,7 @@ jobs:
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
         talk_pw: ${{ secrets.talk_pw }}
+        pw: ${{ secrets.pw }}
+        host: ${{ secrets.host }}
       run: |
         python signin.py

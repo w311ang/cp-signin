@@ -7,7 +7,7 @@ import urllib.parse as urlparse
 from urllib.parse import parse_qs
 import random
 
-os.environ['REQUESTS_CA_BUNDLE'] = '/sdcard/HttpCanary/certs/HttpCanary.pem'
+#os.environ['REQUESTS_CA_BUNDLE'] = '/sdcard/HttpCanary/certs/HttpCanary.pem'
 username=os.getenv('username')
 password=os.getenv('password')
 

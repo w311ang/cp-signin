@@ -6,7 +6,10 @@ s.verify=False
 requests.packages.urllib3.disable_warnings()
 
 def pas(host,pw):
-  url='https://'+host
+  if 'http://' or 'https://' in host:
+    url=host
+  else:
+    url='https://'+host
   with s.get(url) as web:
     text=web.text
     soup=BeautifulSoup(text,features='lxml')

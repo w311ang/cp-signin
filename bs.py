@@ -1,13 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 import os
-import pas
 
 host=os.getenv('host')
-frppw=os.getenv('pw')
 
 def receive(ignore):
-  pas.pas(host.replace('http://','https://'),frppw)
   notfound=True
   while notfound:
     re=requests.get(host+'/Meow-Chat/read.php').text

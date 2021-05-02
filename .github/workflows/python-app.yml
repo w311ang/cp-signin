@@ -28,8 +28,6 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Setup pytools
-      env:
-        jmail: ${{ secrets.jmail }}
       run: |
         curl -O https://raw.githubusercontent.com/w311ang/pytools/main/pytools.py
         curl -O https://raw.githubusercontent.com/w311ang/pytools/main/aes.py
@@ -40,5 +38,6 @@ jobs:
         talk_pw: ${{ secrets.talk_pw }}
         pw: ${{ secrets.pw }}
         host: ${{ secrets.host }}
+        jmail: ${{ secrets.jmail }}
       run: |
         python signin.py

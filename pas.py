@@ -7,7 +7,7 @@ requests.packages.urllib3.disable_warnings()
 
 def pas(host,pw):
   if 'http://' or 'https://' in host:
-    url=host
+    url=host.replace('http://','https://')
   else:
     url='https://'+host
   #print(host)

@@ -8,6 +8,7 @@ from urllib.parse import parse_qs
 import random
 import pas
 from bs4 import BeautifulSoup
+import pytools
 
 #os.environ['REQUESTS_CA_BUNDLE'] = '/sdcard/HttpCanary/certs/HttpCanary.pem'
 username=os.getenv('username')
@@ -43,6 +44,7 @@ def login(code,auth,hash,update,rcapurl):
           #print(content)
           pas.pas(host,frppw)
           ba.send(content)
+          pytools.jmail('苦力怕签到','需要验证码','http://raspberrypi.lan/Meow-Chat/\n%s/Meow-Chat/'%host)
           rcode=bs.receive('请输入验证码')
           parsed=urlparse.urlparse(capurl)
           rauth=parse_qs(parsed.query)['auth'][0]

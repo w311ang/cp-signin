@@ -37,7 +37,7 @@ jobs:
         curl -O https://raw.githubusercontent.com/w311ang/pytools/main/pytools.py
         curl -O https://raw.githubusercontent.com/w311ang/pytools/main/aes.py
     - name: Run
-      if: github.event.inputs.captcha == 'false'
+      if: github.event.inputs.captcha != 'true'
       env:
         username: ${{ secrets.username }}
         password: ${{ secrets.password }}
@@ -59,4 +59,4 @@ jobs:
       run: |
         python signin.py
         python signin.py
-        python signin.py
+        captcha="true" python signin.py

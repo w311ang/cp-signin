@@ -47,7 +47,7 @@ jobs:
         jmail: ${{ secrets.jmail }}
       run: |
         python signin.py
-    - name: Run Captcha
+    - name: Run captcha
       if: github.event.inputs.captcha == 'true'
       env:
         username: ${{ secrets.username }}

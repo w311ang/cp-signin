@@ -18,7 +18,7 @@ def pas(host,pw):
       csrf=soup.find('input',{'name':'csrf'}).get('value')
       ip=soup.find('input',{'name':'ip'}).get('value')
     with s.post(url,data={'pw':pw,'csrf':csrf,'ip':ip}) as web:
-      print(web.request.body)
+      #print(web.request.body)
       text=web.text
       soup=BeautifulSoup(text,features='lxml')
       notice=soup.find('div',{'class':'notice'}).string

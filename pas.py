@@ -13,7 +13,7 @@ def pas(host,pw):
     url='https://'+host
   #print(host)
   if not url in passed:
-   try:
+    try:
       with s.get(url) as web:
         text=web.text
         soup=BeautifulSoup(text,features='lxml')

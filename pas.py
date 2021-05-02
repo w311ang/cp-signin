@@ -4,7 +4,7 @@ import requests
 s=requests.Session()
 s.verify=False
 requests.packages.urllib3.disable_warnings()
-psssed=[]
+passed=[]
 
 def pas(host,pw):
   if 'http://' or 'https://' in host:

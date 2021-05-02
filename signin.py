@@ -6,10 +6,13 @@ import bs
 import urllib.parse as urlparse
 from urllib.parse import parse_qs
 import random
+import pas
 
 #os.environ['REQUESTS_CA_BUNDLE'] = '/sdcard/HttpCanary/certs/HttpCanary.pem'
 username=os.getenv('username')
 password=os.getenv('password')
+frppw=os.getenv('pw')
+host=os.getenv('host')
 
 s = requests.Session()
 s.headers.update({'user-agent': 'Mozilla/5.0 (Linux; Android 10; ONEPLUS A3010 Build/QQ3A.200805.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.152 Mobile Safari/537.36'})
@@ -34,6 +37,7 @@ def login(code,auth,hash,update,rcapurl):
         with s.get(cap,headers={'referer':capurl}) as pic:
           content=pic.content
           #print(content)
+          pas.pas(host,pw)
           ba.send(content)
           rcode=bs.receive('请输入验证码')
           parsed=urlparse.urlparse(capurl)

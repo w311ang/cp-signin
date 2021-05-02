@@ -7,6 +7,7 @@ import urllib.parse as urlparse
 from urllib.parse import parse_qs
 import random
 import pas
+from bs4 import BeautifulSoup
 
 #os.environ['REQUESTS_CA_BUNDLE'] = '/sdcard/HttpCanary/certs/HttpCanary.pem'
 username=os.getenv('username')
@@ -25,7 +26,9 @@ def login(code,auth,hash,update,rcapurl):
     formhash=re.search('(?<=<input type=\"hidden\" name=\"formhash\" id=\"formhash\" value=\')([^\']*)',text).group()
   with s.post('https://klpbbs.com/member.php?mod=logging&action=login&loginsubmit=yes&loginhash=%s&handlekey=loginform&inajax=1'%(loginhash),data={'formhash':formhash,'fastloginfield':'username','cookietime':'31104000','username':username,'password':password,'questionid':0,'auth':auth,'seccodehash':hash,'seccodeverify':code}) as web:
     text=web.text
-    print(text)
+    soup=BeautifulSoup(text,feature='lxml')
+    re=soup.dt.p.text
+    print(re)
     if '请输入验证码后继续登录' in text:
       #print(text)
       capurl=re.search("(?<=succeedhandle_loginform\(')([^\']*)",text).group()

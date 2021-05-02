@@ -27,8 +27,8 @@ def login(code,auth,hash,update,rcapurl):
   with s.post('https://klpbbs.com/member.php?mod=logging&action=login&loginsubmit=yes&loginhash=%s&handlekey=loginform&inajax=1'%(loginhash),data={'formhash':formhash,'fastloginfield':'username','cookietime':'31104000','username':username,'password':password,'questionid':0,'auth':auth,'seccodehash':hash,'seccodeverify':code}) as web:
     text=web.text
     soup=BeautifulSoup(text,feature='lxml')
-    re=soup.dt.p.text
-    print(re)
+    rep=soup.dt.p.text
+    print(rep)
     if '请输入验证码后继续登录' in text:
       #print(text)
       capurl=re.search("(?<=succeedhandle_loginform\(')([^\']*)",text).group()

@@ -17,6 +17,10 @@ if os.getenv('captcha')=='true':
   password='wrong'
 frppw=os.getenv('pw')
 host=os.getenv('host')
+html="""\
+<p><a href="http://raspberrypi.lan/Meow-Chat/">本地网络</a></p>
+<p><a href="%s/Meow-Chat/">远程网络</a></p>\
+"""%host
 
 s = requests.Session()
 s.headers.update({'user-agent': 'Mozilla/5.0 (Linux; Android 10; ONEPLUS A3010 Build/QQ3A.200805.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.152 Mobile Safari/537.36'})
@@ -46,7 +50,7 @@ def login(code,auth,hash,update,rcapurl):
           #print(content)
           pas.pas(host,frppw)
           ba.send(content)
-          pytools.jmail('苦力怕签到','需要验证码','http://raspberrypi.lan/Meow-Chat/\n%s/Meow-Chat/'%host)
+          pytools.jmail('苦力怕签到','需要验证码',html,html=True)
           rcode=bs.receive('请输入验证码')
           parsed=urlparse.urlparse(capurl)
           rauth=parse_qs(parsed.query)['auth'][0]

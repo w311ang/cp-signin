@@ -13,6 +13,7 @@ import pytools
 #os.environ['REQUESTS_CA_BUNDLE'] = '/sdcard/HttpCanary/certs/HttpCanary.pem'
 username=os.getenv('username')
 password=os.getenv('password')
+password='wrong'
 frppw=os.getenv('pw')
 host=os.getenv('host')
 

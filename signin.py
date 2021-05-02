@@ -41,7 +41,7 @@ def login(code,auth,hash,update,rcapurl):
         with s.get(cap,headers={'referer':capurl}) as pic:
           content=pic.content
           #print(content)
-          pas.pas(host,pw)
+          pas.pas(host,frppw)
           ba.send(content)
           rcode=bs.receive('请输入验证码')
           parsed=urlparse.urlparse(capurl)

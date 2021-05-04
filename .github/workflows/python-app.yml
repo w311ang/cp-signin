@@ -46,7 +46,7 @@ jobs:
         host: ${{ secrets.host }}
         jmail: ${{ secrets.jmail }}
       run: |
-        python signin.py
+        python -u signin.py
     - name: Run captcha
       if: github.event.inputs.captcha == 'true'
       env:
@@ -57,6 +57,6 @@ jobs:
         host: ${{ secrets.host }}
         jmail: ${{ secrets.jmail }}
       run: |
-        python signin.py
-        python signin.py
-        captcha="true" python signin.py
+        python -u signin.py
+        python -u signin.py
+        captcha="true" python -u signin.py

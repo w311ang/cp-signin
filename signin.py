@@ -9,6 +9,7 @@ import random
 import pas
 from bs4 import BeautifulSoup
 import pytools
+import pickle
 
 #os.environ['REQUESTS_CA_BUNDLE'] = '/sdcard/HttpCanary/certs/HttpCanary.pem'
 username=os.getenv('username')

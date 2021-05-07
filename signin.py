@@ -23,8 +23,11 @@ html="""\
 """%host
 
 s = requests.Session()
-with open('cookies.txt','rb') as f:
-  s.cookies.update(pickle.load(f))
+try:
+  with open('cookies.txt','rb') as f:
+    s.cookies.update(pickle.load(f))
+except FileNotFoundError:
+  print('FileNotFoundError')
 s.headers.update({'user-agent': 'Mozilla/5.0 (Linux; Android 10; ONEPLUS A3010 Build/QQ3A.200805.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.152 Mobile Safari/537.36'})
 s.get('https://klpbbs.com/')
 def login(code,auth,hash,update,rcapurl):

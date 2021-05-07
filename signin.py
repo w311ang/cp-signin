@@ -23,6 +23,8 @@ html="""\
 """%host
 
 s = requests.Session()
+with open('cookies.txt','rb') as f:
+  s.cookies.update(pickle.load(f))
 s.headers.update({'user-agent': 'Mozilla/5.0 (Linux; Android 10; ONEPLUS A3010 Build/QQ3A.200805.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.152 Mobile Safari/537.36'})
 s.get('https://klpbbs.com/')
 def login(code,auth,hash,update,rcapurl):
@@ -72,3 +74,6 @@ with s.get('https://klpbbs.com/') as web:
   formhash=re.search('(?<=formhash=)([^\&]*)',text).group()
 a=s.get('https://klpbbs.com/plugin.php?id=k_misign:sign&operation=qiandao&format=text&formhash=%s'%(formhash)).text
 print(a)
+
+with open('cookies.txt','wb') as f:
+  pickle.dump(s.cookies, f)

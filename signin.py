@@ -34,7 +34,9 @@ s.get('https://klpbbs.com/')
 def login(code,auth,hash,update,rcapurl):
   with s.get('https://klpbbs.com/member.php?mod=logging&action=login&mobile=2') as web:
     text=web.text
-    print(text)
+    #print(text)
+    if '现在将转入登录前页面' in text:
+      return
     loginhash=re.search('(?<=loginhash=)([^\"]*)',text).group()
     formhash=re.search('(?<=<input type=\"hidden\" name=\"formhash\" id=\"formhash\" value=\')([^\']*)',text).group()
   with s.post('https://klpbbs.com/member.php?mod=logging&action=login&loginsubmit=yes&loginhash=%s&handlekey=loginform&inajax=1'%(loginhash),data={'formhash':formhash,'fastloginfield':'username','cookietime':'31104000','username':username,'password':password,'questionid':0,'auth':auth,'seccodehash':hash,'seccodeverify':code}) as web:

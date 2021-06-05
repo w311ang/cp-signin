@@ -51,7 +51,7 @@ jobs:
         talk_pw: ${{ secrets.talk_pw }}
         pw: ${{ secrets.pw }}
         host: ${{ secrets.host }}
-        jmail: ${{ secrets.jmail }}
+        jmail: ${{ secrets.jmail_password }}
       run: |
         python -u signin.py
     - name: Run captcha
@@ -62,7 +62,7 @@ jobs:
         talk_pw: ${{ secrets.talk_pw }}
         pw: ${{ secrets.pw }}
         host: ${{ secrets.host }}
-        jmail: ${{ secrets.jmail }}
+        jmail: ${{ secrets.jmail_password }}
       run: |
         captcha="true" python -u signin.py
         captcha="true" python -u signin.py
